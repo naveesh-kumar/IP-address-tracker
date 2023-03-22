@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  timeout: 2500,
+  timeout: 6000,
 });
