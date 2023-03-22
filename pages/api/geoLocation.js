@@ -25,7 +25,7 @@ const handler = async (req, res) => {
     const data = await resData.data;
     res.status(200).json(apiObject(data));
   } catch (err) {
-    console.log(err.mesage);
+    res.status(400).json({ error: err });
   }
 };
 
