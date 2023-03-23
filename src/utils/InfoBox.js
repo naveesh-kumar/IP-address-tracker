@@ -8,7 +8,6 @@ const InfoBoxContainer = styled("div")({
   height: "auto",
   padding: "1% 4%",
   wordBreak: "break-word",
-  minHeight: "70px",
   [theme.breakpoints.down("mobile")]: {
     width: "100%",
     padding: "3% 4%",

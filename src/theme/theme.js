@@ -35,7 +35,7 @@ export const theme = createTheme({
             width: ownerState.width,
           }),
           "& .MuiInputBase-input": {
-            padding: "10px 20px",
+            padding: "15px 20px",
           },
           "& .MuiButtonBase-root": {
             height: "100%",

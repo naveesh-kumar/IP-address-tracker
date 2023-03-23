@@ -9,7 +9,8 @@ const InfoContainerDiv = styled("div")({
   height: "fit-content",
   background: "white",
   position: "absolute",
-  top: "70%",
+  top: "100%",
+  transform: "translateY(-50%)",
   zIndex: 999,
   borderRadius: "20px",
   padding: "30px 20px",
@@ -19,7 +20,6 @@ const InfoContainerDiv = styled("div")({
     flexDirection: "column",
     padding: "20px 20px",
     width: "75%",
-    top: "55%",
   },
 });
 

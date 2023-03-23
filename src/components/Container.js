@@ -8,13 +8,13 @@ const ContainerDiv = styled("div")({
   height: "100vh",
 });
 
-const Container = () => {
-  const [data, setData] = useState(null);
+const Container = ({ initialData }) => {
+  const [data, setData] = useState(initialData);
   const Map = dynamic(() => import("./LeafletMap"), { ssr: false });
   return (
     <ContainerDiv>
       <HeaderBar data={data} setData={setData} />
-      <Map lat={data?.lat} lng={data?.lng} city={data?.city ?? ""} />
+      <Map lat={data.lat} lng={data.lng} city={data.city} />
     </ContainerDiv>
   );
 };
