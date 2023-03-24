@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -19,20 +19,29 @@ const { BaseLayer } = LayersControl;
 
 const LeafletMap = ({ lat, lng, city }) => {
   const position = [lat, lng];
+  const mapRef = useRef();
+
+  const handleClick = () => {
+    const map = mapRef.current;
+    map?.flyTo(position, 8, {
+      duration: 2,
+    });
+  };
 
   return (
     <MapContainer
       center={position}
-      zoom={8}
+      zoom={4}
       scrollWheelZoom={true}
       style={{ height: "60%" }}
       zoomControl={false}
+      ref={mapRef}
     >
-      <LayersControl>
+      <LayersControl position="bottomleft">
         <BaseLayer checked name="Open street map">
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors |  
-        <a href="https://www.linkedin.com/in/naveesh-kumar-v-162476117/" target="blank" rel=“noreferrer”>Naveesh Kumar V</a>'
+            <a href="https://www.linkedin.com/in/naveesh-kumar-v-162476117/" target="blank" rel=“noreferrer”>Naveesh Kumar V</a>'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
         </BaseLayer>
@@ -46,7 +55,11 @@ const LeafletMap = ({ lat, lng, city }) => {
       </LayersControl>
 
       <ZoomControl position="bottomright" />
-      <Marker position={position} icon={myIcon}>
+      <Marker
+        position={position}
+        icon={myIcon}
+        eventHandlers={{ click: handleClick }}
+      >
         <Popup>{city}</Popup>
       </Marker>
     </MapContainer>
